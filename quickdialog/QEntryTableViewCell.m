@@ -32,17 +32,17 @@
         [_actionBar sizeToFit];
         _actionBar.barStyle = UIBarStyleBlackTranslucent;
 
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"")
+        UIBarButtonItem *doneButton = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"")
                                                                        style:UIBarButtonItemStyleDone target:self
-                                                                      action:@selector(textFieldMustReturn:)];
+                                                                      action:@selector(textFieldMustReturn:)] autorelease];
 
         _prevNext = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Previous", @""), NSLocalizedString(@"Next", @""), nil]];
         _prevNext.momentary = YES;
         _prevNext.segmentedControlStyle = UISegmentedControlStyleBar;
         _prevNext.tintColor = [UIColor darkGrayColor];
         [_prevNext addTarget:self action:@selector(previousNextDelegate:) forControlEvents:UIControlEventValueChanged];
-        UIBarButtonItem *prevNextWrapper = [[UIBarButtonItem alloc] initWithCustomView:_prevNext];
-        UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *prevNextWrapper = [[[UIBarButtonItem alloc] initWithCustomView:_prevNext] autorelease];
+        UIBarButtonItem *flexible = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
         [_actionBar setItems:[NSArray arrayWithObjects:prevNextWrapper, flexible, doneButton, nil]];
 	}
 	_textField.inputAccessoryView = _actionBar;

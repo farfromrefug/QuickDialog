@@ -33,7 +33,7 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QuickfromTextElement"];
     if (cell==nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"QuickfromTextElement"];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"QuickfromTextElement"] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
         cell.textLabel.font = _font;

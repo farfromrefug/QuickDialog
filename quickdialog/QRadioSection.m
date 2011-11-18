@@ -25,7 +25,7 @@
 - (void)createElements {
 
     for (NSUInteger i=0; i< [_items count]; i++){
-        [self addElement:[[QRadioItemElement alloc] initWithIndex:i RadioSection:self]];
+        [self addElement:[[[QRadioItemElement alloc] initWithIndex:i RadioSection:self] autorelease]];
     }
 }
 

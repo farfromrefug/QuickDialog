@@ -87,7 +87,7 @@
     }
 
     cell.detailTextLabel.text = [dateFormatter stringFromDate:_dateValue];
-
+    [dateFormatter release];
     return cell;
 }
 
@@ -106,6 +106,7 @@
         dateElement.mode =  UIDatePickerModeDate;
         dateElement.hiddenToolbar = YES;
         [section addElement:dateElement];
+        [dateElement release];
 
     }
     if (_mode == UIDatePickerModeTime || _mode == UIDatePickerModeDateAndTime){
@@ -115,8 +116,10 @@
         timeElement.mode = UIDatePickerModeTime;
         timeElement.hiddenToolbar = YES;
         [section addElement:timeElement];
+        [timeElement release];
     }
     [self addSection:section];
+    [section release];
 }
 
 - (void)fetchValueIntoObject:(id)obj {
@@ -137,19 +140,17 @@
 	__block QuickDialogController *controllerForBlock = newController;
 	
     newController.willDisappearCallback = ^{
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 
         [((QSection *)[controllerForBlock.root.sections objectAtIndex:0]) fetchValueIntoObject:dict];
 
-        NSDate *date;
-        NSDate *time;
+        NSDate *date = [NSDate date];
+        NSDate *time = [NSDate date];
         if (_mode == UIDatePickerModeTime){
             time = [dict valueForKey:@"time"];
-            date = [NSDate date];
         }
         else if (_mode == UIDatePickerModeDate){
             date = [dict valueForKey:@"date"];
-            time = [NSDate date];
         }
         else if (_mode == UIDatePickerModeDateAndTime){
             date = [dict valueForKey:@"date"];

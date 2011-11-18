@@ -16,11 +16,11 @@
 
 - (UIView *)createLoadingView {
     
-    UIView *loading = [[UIView alloc] init];
+    UIView *loading = [[[UIView alloc] init] autorelease];
     loading.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     loading.frame = CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height);
     loading.tag = 1123002;
-    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    UIActivityIndicatorView *activity = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
     [activity startAnimating];
     [activity sizeToFit];
     activity.center = CGPointMake(loading.center.x, loading.frame.size.height/3);

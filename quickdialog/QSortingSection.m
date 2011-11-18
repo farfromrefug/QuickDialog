@@ -41,6 +41,7 @@
         [result addObject:el.key];
     }
     [obj setValue:result forKey:_key];
+    [result release];
 }
 
 - (void)moveElementFromRow:(NSUInteger)from toRow:(NSUInteger)to {

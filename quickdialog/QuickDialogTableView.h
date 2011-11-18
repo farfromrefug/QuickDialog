@@ -29,7 +29,7 @@
     QRootElement *_root;
     id <UITableViewDataSource> quickformDataSource;
     id <UITableViewDelegate> quickformDelegate;
-    QElement *_selectedElement;
+//    QElement *_selectedElement;
     UITableViewCell *_selectedCell;
 }
 

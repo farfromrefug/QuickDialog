@@ -15,8 +15,8 @@
 #import "QWebViewController.h"
 
 @interface QWebViewController ()
-- (CGImageRef)createBackArrowImageRef;
-- (CGImageRef)createForwardArrowImageRef;
+- (CGImageRef)backArrowImageRef;
+- (CGImageRef)forwardArrowImageRef;
 
 
 @end
@@ -37,8 +37,8 @@
         _url = url;
         self.view = _webView;
         
-        UIImage *backImage = [[UIImage alloc] initWithCGImage:[self createBackArrowImageRef]];
-        UIImage *forwardImage = [[UIImage alloc] initWithCGImage:[self createForwardArrowImageRef]];
+        UIImage *backImage = [[[UIImage alloc] initWithCGImage:[self backArrowImageRef]] autorelease];
+        UIImage *forwardImage = [[[UIImage alloc] initWithCGImage:[self forwardArrowImageRef]] autorelease];
         _btBack = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStylePlain target:self action:@selector(actionRewind)];
         _btForward = [[UIBarButtonItem alloc] initWithImage:forwardImage style:UIBarButtonItemStylePlain target:self action:@selector(actionForward)];
         
@@ -83,18 +83,18 @@
     self.navigationController.toolbarHidden = NO;
     
 
-    UIBarButtonItem *spacer1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *spacer1 = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil] autorelease];
     spacer1.width = 30;
-    UIBarButtonItem *spacer2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *spacer2 = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil] autorelease];
     spacer2.width = 30;
     self.toolbarItems = [NSArray arrayWithObjects:
             _btBack,
             spacer1,
             _btForward,
-            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(actionRefresh)],
+            [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease],
+            [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(actionRefresh)] autorelease],
             spacer2,        
-            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionGoToSafari)],
+            [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionGoToSafari)] autorelease],
             nil];
     
 }
@@ -104,9 +104,9 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    UIActivityIndicatorView *indicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
     [indicator startAnimating];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:indicator] autorelease];
     self.title = @"Loading";
     if (_firstPageFinished==YES){
         _btBack.enabled = YES;
@@ -126,7 +126,7 @@
 }
 
 
-- (CGContextRef)createContext
+- (CGContextRef)newContext
 {
    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
    CGContextRef context = CGBitmapContextCreate(nil,27,27,8,0, colorSpace,kCGImageAlphaPremultipliedLast);
@@ -134,9 +134,9 @@
    return context;
 }
 
-- (CGImageRef)createBackArrowImageRef
+- (CGImageRef)backArrowImageRef
 {
-   CGContextRef context = [self createContext];
+   CGContextRef context = [self newContext];
    CGColorRef fillColor = [[UIColor blackColor] CGColor];
    CGContextSetFillColor(context, (CGFloat *) CGColorGetComponents(fillColor));
    CGContextBeginPath(context);
@@ -147,12 +147,12 @@
    CGContextFillPath(context);
    CGImageRef image = CGBitmapContextCreateImage(context);
    CGContextRelease(context);
-   return image;
+   return (CGImageRef)[(id)image autorelease];
 }
 
-- (CGImageRef)createForwardArrowImageRef
+- (CGImageRef)forwardArrowImageRef
 {
-   CGContextRef context = [self createContext];
+   CGContextRef context = [self newContext];
    CGColorRef fillColor = [[UIColor blackColor] CGColor];
    CGContextSetFillColor(context, (CGFloat *) CGColorGetComponents(fillColor));
    CGContextBeginPath(context);
@@ -163,7 +163,7 @@
    CGContextFillPath(context);
    CGImageRef image = CGBitmapContextCreateImage(context);
    CGContextRelease(context);
-   return image;
+   return (CGImageRef)[(id)image autorelease];
 }
 
 @end

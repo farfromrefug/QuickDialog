@@ -43,7 +43,7 @@
 
     _textField.inputView = _pickerView;
 
-    self.centeredLabel = [[UILabel alloc] init];
+    self.centeredLabel = [[[UILabel alloc] init] autorelease];
     self.centeredLabel.textColor = [UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0];
     self.centeredLabel.highlightedTextColor = [UIColor whiteColor];
     self.centeredLabel.font = [UIFont systemFontOfSize:17];
@@ -99,6 +99,7 @@
 	_textField.text = [dateFormatter stringFromDate:dateElement.dateValue];
     _pickerView.datePickerMode = dateElement.mode;
     _textField.placeholder = dateElement.placeholder;
+    [dateFormatter release];
 
     _textField.inputAccessoryView.hidden = entry.hiddenToolbar;
 }

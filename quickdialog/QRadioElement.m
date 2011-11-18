@@ -30,7 +30,7 @@
     [self addSection:_parentSection];
 
     for (NSUInteger i=0; i< [_items count]; i++){
-        [_parentSection addElement:[[QRadioItemElement alloc] initWithIndex:i RadioElement:self]];
+        [_parentSection addElement:[[[QRadioItemElement alloc] initWithIndex:i RadioElement:self] autorelease]];
     }
 }
 

@@ -49,7 +49,7 @@
 
     QDateEntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QuickformDateTimeInlineElement"];
     if (cell==nil){
-        cell = [[QDateEntryTableViewCell alloc] init];
+        cell = [[[QDateEntryTableViewCell alloc] init] autorelease];
     }
     [cell prepareForElement:self inTableView:tableView];
     return cell;

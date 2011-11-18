@@ -74,6 +74,7 @@
     [_numberFormatter setMinimumFractionDigits:[self decimalElement].fractionDigits];
     [self decimalElement].floatValue= [[_numberFormatter numberFromString:result] floatValue];
     [self decimalElement].floatValue = (float) (((QDecimalElement *)_entryElement).floatValue / pow(10,[self decimalElement].fractionDigits));
+    [result release];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)replacement {

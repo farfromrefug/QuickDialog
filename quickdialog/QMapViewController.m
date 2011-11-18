@@ -44,12 +44,12 @@
 
     QMapAnnotation *current = [[QMapAnnotation alloc] initWithCoordinate:_coordinate title:_mapTitle];
     [_mapView addAnnotation:current];
-
+    [current release];
     self.title = _mapTitle;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"reuse"];
+    MKPinAnnotationView *pin = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"reuse"] autorelease];
     pin.animatesDrop = YES;
     pin.canShowCallout = NO;
     pin.pinColor = MKPinAnnotationColorGreen;

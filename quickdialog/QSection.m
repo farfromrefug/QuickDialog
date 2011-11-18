@@ -38,7 +38,7 @@
 
 - (void)addElement:(QElement *)element {
     if (self.elements==nil)
-            self.elements = [[NSMutableArray alloc] init];
+            self.elements = [[[NSMutableArray alloc] init] autorelease];
 
     [self.elements addObject:element];
     element.parentSection = self;

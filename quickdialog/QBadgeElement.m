@@ -32,7 +32,7 @@
 - (UITableViewCell *)getCellForTableView:(QuickDialogTableView *)tableView controller:(QuickDialogController *)controller {
     QBadgeTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QuickformBadgeElement"];
     if (cell==nil){
-        cell = [[QBadgeTableCell alloc] init];
+        cell = [[[QBadgeTableCell alloc] init] autorelease];
     }
     cell.textLabel.text = _title;
     cell.badgeLabel.text = _badge;

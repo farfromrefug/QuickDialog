@@ -57,6 +57,7 @@
 
     slider.value = _floatValue;
     cell.accessoryView = slider;
+    [slider release];
     return cell;
 }
 

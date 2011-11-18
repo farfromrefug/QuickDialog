@@ -19,7 +19,7 @@
 
 - (QElement *)buildElementWithJson:(NSDictionary *)dict {
     NSLog(@"element %@", dict);
-    QElement *element = [[NSClassFromString([dict valueForKey:@"type"]) alloc] init];
+    QElement *element = [[[NSClassFromString([dict valueForKey:@"type"]) alloc] init] autorelease];
     if (element==nil)
             return nil;
     [self updateObject:element withPropertiesFrom:dict];
@@ -27,7 +27,7 @@
 }
 
 - (void)buildSectionWithJson:(NSDictionary *)dict {
-    QSection *sect = [[QSection alloc] init];
+    QSection *sect = [[[QSection alloc] init] autorelease];
     [self updateObject:sect withPropertiesFrom:dict];
     [self addSection:sect];
     for (id element in (NSArray *)[dict valueForKey:@"elements"]){

@@ -43,7 +43,7 @@
 
     QDecimalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QuickformDecimalElement"];
     if (cell==nil){
-        cell = [[QDecimalTableViewCell alloc] init];
+        cell = [[[QDecimalTableViewCell alloc] init] autorelease];
     }
     [cell prepareForElement:self inTableView:tableView];
     return cell;

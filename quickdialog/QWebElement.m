@@ -31,6 +31,7 @@
 - (void)selected:(QuickDialogTableView *)tableView controller:(QuickDialogController *)controller indexPath:(NSIndexPath *)path {
     QWebViewController *webController = [[QWebViewController alloc] initWithUrl:_url];
     [controller displayViewController:webController];
+    [webController release];
 
 }
 @end

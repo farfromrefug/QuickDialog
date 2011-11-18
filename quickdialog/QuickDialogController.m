@@ -29,6 +29,7 @@
     [super loadView];
     QuickDialogTableView *quickformTableView = [[QuickDialogTableView alloc] initWithController:self];
     self.tableView = quickformTableView;
+    [quickformTableView release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -89,7 +90,7 @@
 
 + (QuickDialogController *)buildControllerWithClass:(Class)controllerClass root:(QRootElement *)root {
     controllerClass = controllerClass==nil? [QuickDialogController class] : controllerClass;
-    return [((QuickDialogController *)[controllerClass alloc]) initWithRoot:root];
+    return [[((QuickDialogController *)[controllerClass alloc]) initWithRoot:root] autorelease];
 }
 
 - (QuickDialogController *)controllerForRoot:(QRootElement *)root {
@@ -100,7 +101,7 @@
 
 + (QuickDialogController *)controllerForRoot:(QRootElement *)root {
     Class controllerClass = [self controllerClassForRoot:root];
-    return [((QuickDialogController *)[controllerClass alloc]) initWithRoot:root];
+    return [[((QuickDialogController *)[controllerClass alloc]) initWithRoot:root] autorelease];
 }
 
 
@@ -115,9 +116,9 @@
 }
 
 + (UINavigationController*)controllerWithNavigationForRoot:(QRootElement *)root {
-    return [[UINavigationController alloc] initWithRootViewController:[QuickDialogController
+    return [[[UINavigationController alloc] initWithRootViewController:[QuickDialogController
                                                                        buildControllerWithClass:[self controllerClassForRoot:root]
-                                                                       root:root]];
+                                                                       root:root]] autorelease];
 }
 
 @end

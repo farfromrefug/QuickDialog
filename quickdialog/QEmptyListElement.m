@@ -24,7 +24,7 @@
 - (UITableViewCell *)getCellForTableView:(QuickDialogTableView *)tableView controller:(QuickDialogController *)controller {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QEmptyListElement"];
     if (cell == nil){
-        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"QEmptyListElement"];
+        cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"QEmptyListElement"] autorelease];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = _title;

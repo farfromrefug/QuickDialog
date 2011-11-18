@@ -41,14 +41,14 @@
     cell.selectionStyle = self.sections!= nil || self.controllerAction!=nil ? UITableViewCellSelectionStyleBlue: UITableViewCellSelectionStyleNone;
     
     if ((_onImage==nil) && (_offImage==nil))  {
-        UISwitch *boolSwitch = [[UISwitch alloc] init];
+        UISwitch *boolSwitch = [[[UISwitch alloc] init] autorelease];
         boolSwitch.on = _boolValue;
         boolSwitch.enabled = _enabled;
         [boolSwitch addTarget:self action:@selector(switched:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView = boolSwitch;
 
     } else {
-        UIImageView *boolSwitch = [[UIImageView alloc] initWithImage: _boolValue ? _onImage : _offImage];
+        UIImageView *boolSwitch = [[[UIImageView alloc] initWithImage: _boolValue ? _onImage : _offImage] autorelease];
         cell.accessoryView = boolSwitch;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
