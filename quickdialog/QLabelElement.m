@@ -22,8 +22,8 @@
 
 - (QLabelElement *)initWithTitle:(NSString *)title Value:(NSString *)value {
    self = [super init];
-   _title = title;
-   _value = value;
+   _title = [title retain];
+   _value = [value retain];
     return self;
 }
 
@@ -45,5 +45,16 @@
     [super selected:tableView controller:controller indexPath:path];
 }
 
+-(void) cleanup
+{
+    [_value release];
+    [_image release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
 
 @end

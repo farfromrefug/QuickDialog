@@ -23,7 +23,7 @@
 
 - (QTextElement *)initWithText:(NSString *)text {
     self = [super init];
-    _text = text;
+    _text = [text retain];
     _font = [UIFont systemFontOfSize:14];
     _color = [UIColor blackColor];
     return self;
@@ -70,5 +70,18 @@
 	
 	[obj setValue:_text forKey:_key];
 }
+
+-(void) cleanup
+{
+    [_text release];
+    [_font release];
+    [_color release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}  
 
 @end

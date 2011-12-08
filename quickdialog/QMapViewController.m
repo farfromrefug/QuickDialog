@@ -20,7 +20,7 @@
 
 - (QMapViewController *)initWithTitle:(NSString *)title coordinate:(CLLocationCoordinate2D)coordinate {
     self = [self initWithCoordinate:coordinate];
-    _mapTitle = title;
+    _mapTitle = [title retain];
     return self;
 }
 
@@ -29,7 +29,7 @@
     self = [super init];
     if (self != nil){
         _coordinate = coordinate;
-        _mapView = [[MKMapView alloc] init];
+        _mapView = [[[MKMapView alloc] init] autorelease];
         _mapView.delegate = self;
 
         self.view = _mapView;
@@ -56,4 +56,14 @@
     return pin;
 }
 
+-(void) cleanup
+{
+    [_mapTitle release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
 @end

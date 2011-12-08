@@ -28,14 +28,14 @@
 
 - (QDecimalElement *)initWithTitle:(NSString *)title value:(float)value {
     self = [super initWithTitle:title Value:nil] ;
-    _floatValue = value;
+    self.floatValue = value;
     return self;
 }
 
 
 - (QDecimalElement *)initWithValue:(float)value {
     self = [super init];
-    _floatValue = value;
+    self.floatValue = value;
     return self;
 }
 

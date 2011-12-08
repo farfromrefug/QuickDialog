@@ -39,7 +39,7 @@ NSDictionary * QRootElementJSONBuilderConversionDict;
     return element;
 }
 
-- (void)buildSectionWithJson:(NSDictionary *)dict {
+- (void)buildSectionWithJSON:(NSDictionary *)dict {
     QSection *sect = [[[QSection alloc] init] autorelease];
     [self updateObject:sect withPropertiesFrom:dict];
     [self addSection:sect];
@@ -78,14 +78,14 @@ NSDictionary * QRootElementJSONBuilderConversionDict;
 - (void)initializeMappings {
     QRootElementJSONBuilderConversionDict = [[NSDictionary alloc] initWithObjectsAndKeys:
 
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
+                    [NSDictionary dictionaryWithObjectsAndKeys:
                         [NSNumber numberWithInt:UITextAutocapitalizationTypeNone], @"None",
                                 [NSNumber numberWithInt:UITextAutocapitalizationTypeWords], @"Words",
                                 [NSNumber numberWithInt:UITextAutocapitalizationTypeSentences], @"Sentences",
                                 [NSNumber numberWithInt:UITextAutocapitalizationTypeAllCharacters], @"AllCharacters",
                                 nil], @"autocapitalizationType",
 
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
+                    [NSDictionary dictionaryWithObjectsAndKeys:
                             [NSNumber numberWithInt:UITextAutocorrectionTypeDefault], @"Default",
                                     [NSNumber numberWithInt:UITextAutocorrectionTypeNo], @"No",
                                     [NSNumber numberWithInt:UITextAutocorrectionTypeYes], @"Yes",
@@ -93,7 +93,7 @@ NSDictionary * QRootElementJSONBuilderConversionDict;
 
 
 
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
+                    [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:UIKeyboardTypeDefault], @"Default",
                                     [NSNumber numberWithInt:UIKeyboardTypeASCIICapable], @"ASCIICapable",
                                     [NSNumber numberWithInt:UIKeyboardTypeNumbersAndPunctuation], @"NumbersAndPunctuation",
@@ -107,13 +107,13 @@ NSDictionary * QRootElementJSONBuilderConversionDict;
                                     [NSNumber numberWithInt:UIKeyboardTypeAlphabet], @"Alphabet",
                                     nil], @"keyboardType",
 
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
+                    [NSDictionary dictionaryWithObjectsAndKeys:
                             [NSNumber numberWithInt:UIKeyboardAppearanceDefault], @"Default",
                                     [NSNumber numberWithInt:UIKeyboardAppearanceAlert], @"Alert",
                                     nil], @"keyboardAppearance",
 
 
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
+                    [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:UIReturnKeyDefault], @"Default",
                                     [NSNumber numberWithInt:UIReturnKeyGo], @"Go",
                                     [NSNumber numberWithInt:UIReturnKeyGoogle], @"Google",

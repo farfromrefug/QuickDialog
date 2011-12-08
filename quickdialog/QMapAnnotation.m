@@ -23,8 +23,20 @@
 - (QMapAnnotation *)initWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString *)title {
     self = [super init];
     self.coordinate = coordinate;
-    _title = title;
+    _title = [title retain];
 
     return self;
+}
+
+-(void) cleanup
+{
+    [_title release];
+    [_subtitle release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
 }
 @end

@@ -36,7 +36,11 @@
 }
 
 - (void)setDateValue:(NSDate *)date {
-    _dateValue = date;
+    if (_dateValue)
+    {
+        [_dateValue release];
+    }
+    _dateValue = [date retain];
     self.sections = nil;
     [self initializeRoot];
 }
@@ -56,8 +60,8 @@
 - (QDateTimeElement *)initWithTitle:(NSString *)title date:(NSDate *)date {
     self = [self init];
     if (self!=nil){
-		_title = title;
-        _dateValue = date;
+		_title = [title retain];
+        _dateValue = [date retain];
         [self initializeRoot];
     }
     return self;
@@ -168,6 +172,17 @@
 
     [newController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
 
+}
+
+-(void) cleanup
+{
+    [_dateValue release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
 }
 
 

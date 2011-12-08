@@ -25,8 +25,8 @@
     self = [self initWithTitle:title Value:nil];
     
     if (self) {
-        _textValue = value;
-        _placeholder = placeholder;
+        _textValue = [value retain];
+        _placeholder = [placeholder retain];
         
         self.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         self.autocorrectionType = UITextAutocorrectionTypeDefault;
@@ -63,6 +63,17 @@
 	[obj setValue:_textValue forKey:_key];
 }
 
+-(void) cleanup
+{
+    [_placeholder release];
+    [_textValue release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
 
 #pragma mark - UITextInputTraits
 

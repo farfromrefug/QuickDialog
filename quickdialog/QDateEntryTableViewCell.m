@@ -104,5 +104,16 @@
     _textField.inputAccessoryView.hidden = entry.hiddenToolbar;
 }
 
+-(void) cleanup
+{
+    [_pickerView release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
+
 
 @end

@@ -83,6 +83,17 @@
     }
 }
 
+-(void) cleanup
+{
+    [_items release];
+    [_values release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
 
 
 @end

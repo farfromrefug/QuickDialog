@@ -42,7 +42,7 @@
 - (QRadioSection *)initWithItems:(NSArray *)stringArray selected:(NSUInteger)selected {
     self = [super init];
     if (self!=nil){
-        _items = stringArray;
+        _items = [stringArray retain];
         _selected = selected;
         [self createElements];
     }
@@ -61,5 +61,15 @@
     [obj setValue:[NSNumber numberWithInteger:_selected] forKey:_key];
 }
 
+-(void) cleanup
+{
+    [_items release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}    
 
 @end

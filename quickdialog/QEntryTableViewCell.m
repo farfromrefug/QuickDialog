@@ -229,5 +229,17 @@
     return nil;
 }
 
+-(void) cleanup
+{
+    [_actionBar release];
+    [_prevNext release];
+    [_textField release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
 
 @end

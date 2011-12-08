@@ -34,13 +34,23 @@
 }
 
 - (void)setFooterImage:(NSString *)imageName {
-    _footerImage = imageName;
-    self.footerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:_footerImage]];
+    if (_footerImage)
+    {
+        [_footerImage release];
+        _footerImage = nil;
+    }
+    _footerImage = [imageName retain];
+    self.footerView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:_footerImage]] autorelease];
 }
 
 - (void)setHeaderImage:(NSString *)imageName {
-    _headerImage = imageName;
-    self.headerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:_headerImage]];
+    if (_headerImage)
+    {
+        [_headerImage release];
+        _headerImage = nil;
+    }
+    _headerImage = [imageName retain];
+    self.headerView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:_headerImage]] autorelease];
 }
 
 - (QSection *)initWithTitle:(NSString *)sectionTitle {
@@ -63,6 +73,20 @@
     for (QElement *el in elements){
         [el fetchValueIntoObject:obj];
     }
+}
+
+-(void) cleanup
+{
+    [_footerImage release];
+    [_headerImage release];
+    [title release];
+    [_key release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
 }
 
 

@@ -26,8 +26,8 @@
 - (QBadgeTableCell *)init {
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"QuickformBadgeElement"];
     if (self){
-        _badgeColor = [UIColor colorWithRed:0.530f green:0.600f blue:0.738f alpha:1.000f];
-        _badgeLabel = [[UILabel alloc] init];
+        self.badgeColor = [UIColor colorWithRed:0.530f green:0.600f blue:0.738f alpha:1.000f];
+        _badgeLabel = [[[UILabel alloc] init] retain];
         [self.contentView addSubview:_badgeLabel];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -56,6 +56,18 @@
 	CGContextClosePath(context);
 	CGContextFillPath(context);
 	CGContextRestoreGState(context);
+}
+
+-(void) cleanup
+{
+    [_badgeLabel release];
+    [_badgeColor release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
 }
 
 @end

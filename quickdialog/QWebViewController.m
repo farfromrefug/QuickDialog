@@ -31,10 +31,10 @@
 
     self = [super init];
     if (self!=nil){
-        _webView = [[UIWebView alloc] init];
+        _webView = [[[UIWebView alloc] init] autorelease];
         _webView.delegate = self;
         _webView.scalesPageToFit = YES;        
-        _url = url;
+        _url = [url retain];
         self.view = _webView;
         
         UIImage *backImage = [[[UIImage alloc] initWithCGImage:[self backArrowImageRef]] autorelease];
@@ -166,4 +166,14 @@
    return (CGImageRef)[(id)image autorelease];
 }
 
+-(void) cleanup
+{
+    [_url release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+} 
 @end

@@ -81,4 +81,15 @@
         [self deselectRowAtIndexPath:selectedRowIndex animated:YES];
     };
 }
+
+-(void) cleanup
+{
+    [_root release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
 @end

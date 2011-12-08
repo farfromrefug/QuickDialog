@@ -20,8 +20,8 @@
 
     self = [super init];
     if (self!=nil){
-        _url = url;
-        _title = title;
+        _url = [url retain];
+        self.title = title;
     }
     return self;
 }
@@ -33,4 +33,15 @@
     [webController release];
 
 }
+
+-(void) cleanup
+{
+    [_url release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}  
 @end

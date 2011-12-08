@@ -76,5 +76,17 @@
     [obj setValue:[NSNumber numberWithBool:_boolValue] forKey:_key];
 }
 
+-(void) cleanup
+{
+    [_offImage release];
+    [_onImage release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
+
 
 @end

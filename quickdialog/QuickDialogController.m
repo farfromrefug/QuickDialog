@@ -40,14 +40,18 @@
 - (QuickDialogController *)initWithRoot:(QRootElement *)rootElement {
     self = [super init];
     if (self) {
-         _root = rootElement;
+         _root = [rootElement retain];
     }
     return self;
 }
 
 - (void)setRoot:(QRootElement *)root {
-    _root = root;
-    ((QuickDialogTableView *)self.tableView).root = root;
+    if (_root)
+    {
+        [_root release];
+    }
+    _root = [root retain];
+    ((QuickDialogTableView *)self.tableView).root = _root;
     self.title = _root.title;
     self.navigationItem.title = _root.title;
 }
@@ -65,6 +69,23 @@
     if (_willDisappearCallback!=nil){
         _willDisappearCallback();
     }
+}
+
+-(void) cleanup
+{
+    [_root release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
+
+-(void) viewDidUnload
+{
+    [super viewDidUnload];
+    [self cleanup];
 }
 
 - (void)popToPreviousRootElement {

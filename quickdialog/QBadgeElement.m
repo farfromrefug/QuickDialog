@@ -24,9 +24,9 @@
 
 - (QBadgeElement *)initWithTitle:(NSString *)title Value:(NSString *)value {
     self = [super init];
-    _title = title;
-    _badge = value;
-    _badgeColor = [UIColor colorWithRed:0.530f green:0.600f blue:0.738f alpha:1.000f];
+    self.title = title;
+    self.badge = value;
+    self.badgeColor = [UIColor colorWithRed:0.530f green:0.600f blue:0.738f alpha:1.000f];
     return self;
 
 }
@@ -43,6 +43,18 @@
     cell.selectionStyle = self.sections!= nil || self.controllerAction!=nil ? UITableViewCellSelectionStyleBlue: UITableViewCellSelectionStyleNone;
     [cell setNeedsDisplay];
     return cell;
+}
+
+-(void) cleanup
+{
+    [_badge release];
+    [_badgeColor release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
 }
 
 @end

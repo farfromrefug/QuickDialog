@@ -64,5 +64,17 @@
     }
 }
 
+-(void) cleanup
+{
+    [_title release];
+    [_sections release];
+    [_controllerName release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}  
 
 @end

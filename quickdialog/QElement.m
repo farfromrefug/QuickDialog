@@ -65,4 +65,16 @@
 - (void)fetchValueIntoObject:(id)obj {
 }
 
+-(void) cleanup
+{
+    [_key release];
+    [_parentSection release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
+
 @end

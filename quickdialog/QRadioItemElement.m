@@ -21,17 +21,17 @@
 
 - (QRadioItemElement *)initWithIndex:(NSUInteger)index RadioElement:(QRadioElement *)radioElement {
     self = [super init];
-    _radioElement = radioElement;
+    _radioElement = [radioElement retain];
     _index = index;
-    _title = [[radioElement.items objectAtIndex:_index] description];
+    self.title = [[radioElement.items objectAtIndex:_index] description];
     return self;
 }
 
 - (QRadioItemElement *)initWithIndex:(NSUInteger)index RadioSection:(QRadioSection *)section {
     self = [super init];
-    _radioSection = section;
+    _radioSection = [section retain];
     _index = index;
-    _title = [[_radioSection.items objectAtIndex:_index] description];
+    self.title = [[_radioSection.items objectAtIndex:_index] description];
     return self;
 }
 
@@ -72,5 +72,16 @@
     }
 }
 
+-(void) cleanup
+{
+    [_radioElement release];
+    [_radioSection release];
+}
+
+-(void) dealloc
+{
+    [self cleanup];
+    [super dealloc];
+}
 
 @end
