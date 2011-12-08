@@ -46,10 +46,10 @@
 - (id)initWithJSONFile:(NSString *)jsonPath {
     self = [super init];
     if (self!=nil){
-        NSError *jsonParsingError = nil;
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:jsonPath ofType:@"json"];
-        NSDictionary *jsonRoot = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filePath] options:0 error:&jsonParsingError];
-        [self buildRootWithJSON:jsonRoot];
+//        NSError *jsonParsingError = nil;
+//        NSString *filePath = [[NSBundle mainBundle] pathForResource:jsonPath ofType:@"json"];
+//        NSDictionary *jsonRoot = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filePath] options:0 error:&jsonParsingError];
+//        [self buildRootWithJSON:jsonRoot];
     }
     return self;}
 
