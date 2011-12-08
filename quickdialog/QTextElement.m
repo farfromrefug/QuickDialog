@@ -25,7 +25,7 @@
     self = [super init];
     _text = text;
     _font = [UIFont systemFontOfSize:14];
-
+    _color = [UIColor blackColor];
     return self;
 }
 
@@ -48,7 +48,10 @@
 }
 
 - (void)selected:(QuickDialogTableView *)tableView controller:(QuickDialogController *)controller indexPath:(NSIndexPath *)indexPath {
-    self.onSelected();
+    if (self.onSelected) {
+        self.onSelected();
+    }
+    
 }
 
 - (CGFloat)getRowHeightForTableView:(QuickDialogTableView *)tableView {

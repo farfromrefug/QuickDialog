@@ -12,9 +12,6 @@
 // permissions and limitations under the License.
 //
 
-#import "QElement.h"
-#import "QRootElement.h"
-
 @implementation QRootElement
 
 @synthesize title = _title;
@@ -22,6 +19,10 @@
 @synthesize grouped = _grouped;
 @synthesize controllerName = _controllerName;
 
+- (QRootElement *)init {
+    self = [super init];
+    return self;
+}
 - (void)addSection:(QSection *)section {
     if (_sections==nil)
         _sections = [[NSMutableArray alloc] init];

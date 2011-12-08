@@ -12,30 +12,25 @@
 // permissions and limitations under the License.
 //
 
-#import "QRootElement.h"
-#import "QRadioElement.h"
-#import "QRadioItemElement.h"
-
 @implementation QRadioElement {
-
+    QSection *_internalRadioItemsSection;
 }
+
 @synthesize selected = _selected;
 @synthesize values = _values;
+@synthesize items = _items;
 
 
 - (void)createElements {
     _sections = nil;
-    _parentSection = [[QSection alloc] init];
-    
+    _internalRadioItemsSection = [[QSection alloc] init];
+    _parentSection = _internalRadioItemsSection;
+
     [self addSection:_parentSection];
 
     for (NSUInteger i=0; i< [_items count]; i++){
         [_parentSection addElement:[[[QRadioItemElement alloc] initWithIndex:i RadioElement:self] autorelease]];
     }
-}
-
-- (NSArray *)items {
-    return _items;
 }
 
 - (QRadioElement *)initWithItems:(NSArray *)stringArray selected:(NSInteger)selected {
@@ -46,8 +41,8 @@
 - (QRadioElement *)initWithItems:(NSArray *)stringArray selected:(NSInteger)selected title:(NSString *)title {
     self = [super init];
     if (self!=nil){
-        _items = stringArray;
-        _selected = selected;
+        self.items = stringArray;
+        self.selected = selected;
         [self createElements];
         self.title = title;
     }
@@ -82,9 +77,9 @@
         return;
 
     if (_values==nil){
-        [obj setObject:[NSNumber numberWithInt:_selected] forKey:_key];
+        [obj setValue:[NSNumber numberWithInt:_selected] forKey:_key];
     } else {
-        [obj setObject:[_values objectAtIndex:(NSUInteger) _selected] forKey:_key];
+        [obj setValue:[_values objectAtIndex:(NSUInteger) _selected] forKey:_key];
     }
 }
 

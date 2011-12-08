@@ -1,0 +1,32 @@
+{
+	"grouped": true,
+	"title": "Sample Controls",
+	"root": [
+        { "title":"Entry Elements", "elements":[
+
+            {  "type":"QEntryElement", "title":"secureTextEntry", "placeholder":"Text", "secureTextEntry":true },
+            {  "type":"QEntryElement", "title":"enablesReturnKey", "placeholder":"Text", "enablesReturnKeyAutomatically":true },
+            {  "type":"QEntryElement", "title":"autocapitalizationType", "placeholder":"Words",  "autocapitalizationType":"Words" },
+            {  "type":"QEntryElement", "title":"autocorrectionType", "placeholder":"No",  "autocorrectionType":"No" },
+            {  "type":"QEntryElement", "title":"keyboardType", "placeholder":"PhonePad",  "keyboardType":"PhonePad" },
+            {  "type":"QEntryElement", "title":"keyboardAppearance", "placeholder":"Alert",  "keyboardAppearance":"Alert" },
+            {  "type":"QEntryElement", "title":"returnKeyType", "placeholder":"EmergencyCall",  "returnKeyType":"EmergencyCall" }
+            ]
+        } ,
+        { "title":"Controls", "elements":[
+            {"type":"QLabelElement", "title":"Label"},
+            {"type":"QBadgeElement",  "title":"Badge", "badge":"123"},
+            {"type":"QBooleanElement", "title":"Boolean", "boolValue":0},
+            {"type":"QBooleanElement", "title":"Boolean", "boolValue":1},
+            {"type":"QButtonElement", "title":"Button"},
+            {"type":"QDateTimeInlineElement", "title":"DateTime Inline"},
+            {"type":"QFloatElement", "title":"Float", "floatValue":0.54},
+            {"type":"QMapElement", "title":"Map", "lat":-27.59, "lng":-48.55},
+            {"type":"QRadioElement", "title":"Radio"},
+            {"type":"QTextElement",  "text":"Text Element"},
+            {"type":"QWebElement",  "title":"Web", "url":"http://escoz.com"}
+        ]
+        }
+	]
+
+}
