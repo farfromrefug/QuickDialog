@@ -79,7 +79,9 @@
 -(void) cleanup
 {
     [_offImage release];
+    _offImage = nil;
     [_onImage release];
+    _onImage = nil;
 }
 
 -(void) dealloc

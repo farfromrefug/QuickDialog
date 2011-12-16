@@ -85,6 +85,7 @@
 -(void) cleanup
 {
     [_root release];
+    _root = nil;
 }
 
 -(void) dealloc

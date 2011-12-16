@@ -14,6 +14,12 @@
 
 #import <objc/message.h>
 
+@interface QElement ()
+
+-(void)cleanup;
+
+@end
+
 @implementation QElement {
 @private
     NSObject *_object;
@@ -68,7 +74,9 @@
 -(void) cleanup
 {
     [_key release];
+    _key = nil;
     [_parentSection release];
+    _parentSection = nil;
 }
 
 -(void) dealloc

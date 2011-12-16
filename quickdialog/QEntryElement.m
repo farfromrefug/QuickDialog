@@ -66,7 +66,9 @@
 -(void) cleanup
 {
     [_placeholder release];
+    _placeholder = nil;
     [_textValue release];
+    _textValue = nil;
 }
 
 -(void) dealloc

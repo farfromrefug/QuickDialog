@@ -31,7 +31,9 @@
 -(void) cleanup
 {
     [_title release];
+    _title = nil;
     [_subtitle release];
+    _subtitle = nil;
 }
 
 -(void) dealloc

@@ -86,7 +86,9 @@
 -(void) cleanup
 {
     [_items release];
+    _items = nil;
     [_values release];
+    _values = nil;
 }
 
 -(void) dealloc

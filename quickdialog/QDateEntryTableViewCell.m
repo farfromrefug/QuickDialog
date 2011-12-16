@@ -107,6 +107,7 @@
 -(void) cleanup
 {
     [_pickerView release];
+    _pickerView = nil;
 }
 
 -(void) dealloc

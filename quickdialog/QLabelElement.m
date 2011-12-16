@@ -48,7 +48,9 @@
 -(void) cleanup
 {
     [_value release];
+    _value = nil;
     [_image release];
+    _image = nil;
 }
 
 -(void) dealloc

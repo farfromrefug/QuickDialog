@@ -61,7 +61,9 @@
 -(void) cleanup
 {
     [_badgeLabel release];
+    _badgeLabel = nil;
     [_badgeColor release];
+    _badgeColor = nil;
 }
 
 -(void) dealloc

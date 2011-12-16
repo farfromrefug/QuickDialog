@@ -177,6 +177,7 @@
 -(void) cleanup
 {
     [_dateValue release];
+    _dateValue = nil;
 }
 
 -(void) dealloc

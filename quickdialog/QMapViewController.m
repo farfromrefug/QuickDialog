@@ -59,6 +59,7 @@
 -(void) cleanup
 {
     [_mapTitle release];
+    _mapTitle = nil;
 }
 
 -(void) dealloc

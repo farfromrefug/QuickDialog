@@ -37,6 +37,7 @@
 -(void) cleanup
 {
     [_url release];
+    _url = nil;
 }
 
 -(void) dealloc

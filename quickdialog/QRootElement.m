@@ -12,6 +12,13 @@
 // permissions and limitations under the License.
 //
 
+@interface QRootElement ()
+
+-(void)cleanup;
+
+@end
+
+
 @implementation QRootElement
 
 @synthesize title = _title;
@@ -67,8 +74,11 @@
 -(void) cleanup
 {
     [_title release];
+    _title = nil;
     [_sections release];
+    _sections = nil;
     [_controllerName release];
+    _controllerName = nil;
 }
 
 -(void) dealloc

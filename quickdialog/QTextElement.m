@@ -74,8 +74,11 @@
 -(void) cleanup
 {
     [_text release];
+    _text = nil;
     [_font release];
+    _font = nil;
     [_color release];
+    _color = nil;
 }
 
 -(void) dealloc

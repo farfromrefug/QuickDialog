@@ -75,7 +75,9 @@
 -(void) cleanup
 {
     [_radioElement release];
+    _radioElement = nil;
     [_radioSection release];
+    _radioSection = nil;
 }
 
 -(void) dealloc

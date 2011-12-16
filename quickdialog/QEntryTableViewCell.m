@@ -232,8 +232,11 @@
 -(void) cleanup
 {
     [_actionBar release];
+    _actionBar = nil;
     [_prevNext release];
+    _prevNext = nil;
     [_textField release];
+    _textField = nil;
 }
 
 -(void) dealloc

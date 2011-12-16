@@ -78,9 +78,13 @@
 -(void) cleanup
 {
     [_footerImage release];
+    _footerImage = nil;
     [_headerImage release];
+    _headerImage = nil;
     [title release];
+    title = nil;
     [_key release];
+    _key = nil;
 }
 
 -(void) dealloc
