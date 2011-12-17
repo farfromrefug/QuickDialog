@@ -38,5 +38,6 @@
 - (QSection *)getSectionForIndex:(NSInteger)index;
 - (NSInteger)numberOfSections;
 
+-(void)cleanup;
 
 @end

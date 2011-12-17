@@ -45,5 +45,6 @@
 - (CGFloat)getRowHeightForTableView:(QuickDialogTableView *)tableView;
 
 - (void)fetchValueIntoObject:(id)obj;
+-(void)cleanup;
 
 @end

@@ -14,8 +14,6 @@
 
 @interface QRootElement ()
 
--(void)cleanup;
-
 @end
 
 
@@ -79,6 +77,7 @@
     _sections = nil;
     [_controllerName release];
     _controllerName = nil;
+    [super cleanup];
 }
 
 -(void) dealloc
