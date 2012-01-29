@@ -43,7 +43,9 @@
 }
 
 -(void)setRoot:(QRootElement *)root{
-    _root = root;
+    if (_root)
+        [_root release];
+    _root = [root retain];
     for (QSection *section in _root.sections) {
         if (section.needsEditing == YES){
             [self setEditing:YES animated:YES];
@@ -84,6 +86,8 @@
 
 -(void) cleanup
 {
+    [quickformDataSource release];
+    [quickformDelegate release];
     [_root release];
     _root = nil;
 }

@@ -24,8 +24,8 @@
 - (QTextElement *)initWithText:(NSString *)text {
     self = [super init];
     _text = [text retain];
-    _font = [UIFont systemFontOfSize:14];
-    _color = [UIColor blackColor];
+    self.font = [UIFont systemFontOfSize:14];
+    self.color = [UIColor blackColor];
     return self;
 }
 

@@ -24,7 +24,9 @@
     NSString *_key;
     CGRect _entryPosition;
 
-@private
+@protected
+    NSString *_headerImage;
+    NSString *_footerImage;
     __weak QRootElement *_rootElement;
     UIView *_headerView;
     UIView *_footerView;

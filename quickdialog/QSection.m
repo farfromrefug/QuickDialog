@@ -13,9 +13,7 @@
 //
 
 @implementation QSection {
-@private
-    NSString *_headerImage;
-    NSString *_footerImage;
+
 }
 @synthesize title;
 @synthesize footer;
